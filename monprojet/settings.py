@@ -3,6 +3,14 @@ import os
 import dj_database_url
 from dotenv import load_dotenv
 
+
+
+ALLOWED_HOSTS = ["*"]
+# =========================
+# BASE
+# =========================
+STATIC_URL = "/static/"
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 load_dotenv()
@@ -10,21 +18,23 @@ load_dotenv()
 # =========================
 # SECURITY
 # =========================
-
-SECRET_KEY = os.environ.get("SECRET_KEY", "dev-only-insecure-key")
+SECRET_KEY = os.environ.get("SECRET_KEY", "dev-secret-key")
 
 DEBUG = os.environ.get("DEBUG", "False") == "True"
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = [
+    "127.0.0.1",
+    "localhost",
+    ".onrender.com",
+]
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://monapp-django.onrender.com",
+    "https://*.onrender.com",
 ]
 
 # =========================
 # APPLICATIONS
 # =========================
-
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -32,12 +42,13 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+
+    "monapp",
 ]
 
 # =========================
 # MIDDLEWARE
 # =========================
-
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
@@ -51,6 +62,9 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = "monprojet.urls"
 
+# =========================
+# TEMPLATES
+# =========================
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
@@ -72,7 +86,6 @@ WSGI_APPLICATION = "monprojet.wsgi.application"
 # =========================
 # DATABASE
 # =========================
-
 DATABASES = {
     "default": dj_database_url.config(
         default="sqlite:///db.sqlite3",
@@ -83,7 +96,6 @@ DATABASES = {
 # =========================
 # PASSWORD VALIDATION
 # =========================
-
 AUTH_PASSWORD_VALIDATORS = [
     {"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"},
     {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator"},
@@ -92,18 +104,16 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 # =========================
-# I18N
+# INTERNATIONALIZATION
 # =========================
-
 LANGUAGE_CODE = "fr-fr"
 TIME_ZONE = "UTC"
 USE_I18N = True
 USE_TZ = True
 
 # =========================
-# STATIC FILES
+# STATIC FILES (Render + WhiteNoise)
 # =========================
-
 STATIC_URL = "/static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
@@ -116,4 +126,7 @@ STORAGES = {
     },
 }
 
+# =========================
+# DEFAULT PRIMARY KEY
+# =========================
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
