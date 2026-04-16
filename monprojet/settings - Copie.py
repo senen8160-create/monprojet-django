@@ -2,16 +2,10 @@ from pathlib import Path
 import os
 import dj_database_url
 from dotenv import load_dotenv
-from pathlib import Path
-
-BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Charge le fichier .env en local
 load_dotenv()
 ALLOWED_HOSTS = ["*"]
-
-STATIC_URL = "/static/"
-STATIC_ROOT = BASE_DIR / "staticfiles"
 # BASE DIRECTORY
 BASE_DIR = Path(__file__).resolve().parent.parent
 
