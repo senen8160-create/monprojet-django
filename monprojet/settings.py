@@ -2,43 +2,24 @@ from pathlib import Path
 import os
 import dj_database_url
 from dotenv import load_dotenv
-from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Charge le fichier .env en local
 load_dotenv()
-ALLOWED_HOSTS = ["*"]
-
-STATIC_URL = "/static/"
-STATIC_ROOT = BASE_DIR / "staticfiles"
-# BASE DIRECTORY
-BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # =========================
 # SECURITY
 # =========================
 
-SECRET_KEY = os.environ.get(
-    "SECRET_KEY",
-    "dev-only-insecure-key"
-)
+SECRET_KEY = os.environ.get("SECRET_KEY", "dev-only-insecure-key")
 
 DEBUG = os.environ.get("DEBUG", "False") == "True"
 
-ALLOWED_HOSTS = [
-    "127.0.0.1",
-    "localhost",
-    "monapp-django.onrender.com",
-]
+ALLOWED_HOSTS = ["*"]
 
-
-# Obligatoire Django 4+
 CSRF_TRUSTED_ORIGINS = [
     "https://monapp-django.onrender.com",
 ]
-
 
 # =========================
 # APPLICATIONS
@@ -52,7 +33,6 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
 ]
-
 
 # =========================
 # MIDDLEWARE
@@ -69,9 +49,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-
 ROOT_URLCONF = "monprojet.urls"
-
 
 TEMPLATES = [
     {
@@ -91,9 +69,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "monprojet.wsgi.application"
 
-
 # =========================
-# DATABASE (PostgreSQL Render)
+# DATABASE
 # =========================
 
 DATABASES = {
@@ -103,45 +80,31 @@ DATABASES = {
     )
 }
 
-
 # =========================
 # PASSWORD VALIDATION
 # =========================
 
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
-    },
+    {"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"},
+    {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator"},
+    {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator"},
+    {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator"},
 ]
 
-
 # =========================
-# INTERNATIONALIZATION
+# I18N
 # =========================
 
 LANGUAGE_CODE = "fr-fr"
-
 TIME_ZONE = "UTC"
-
 USE_I18N = True
 USE_TZ = True
 
-
 # =========================
-# STATIC FILES (WhiteNoise)
+# STATIC FILES
 # =========================
 
-STATIC_URL = "static/"
-
+STATIC_URL = "/static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
 STORAGES = {
@@ -152,10 +115,5 @@ STORAGES = {
         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
     },
 }
-
-
-# =========================
-# DEFAULT PRIMARY KEY
-# =========================
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
