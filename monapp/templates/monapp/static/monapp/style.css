@@ -1,0 +1,92 @@
+body{
+    margin:0;
+    font-family:Arial, Helvetica, sans-serif;
+    background:#f4f6f8;
+}
+
+/* NAVBAR */
+.navbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:#111;
+    color:white;
+    padding:15px 40px;
+}
+
+.navbar a{
+    color:white;
+    margin-left:20px;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.navbar a:hover{
+    color:#ff9800;
+}
+
+/* HERO */
+.hero{
+    text-align:center;
+    padding:80px;
+    background:linear-gradient(135deg,#ff9800,#ff5722);
+    color:white;
+}
+
+.hero button{
+    padding:12px 25px;
+    border:none;
+    background:white;
+    color:#ff5722;
+    font-size:16px;
+    cursor:pointer;
+    border-radius:5px;
+}
+
+/* PRODUITS */
+.products{
+    padding:40px;
+    text-align:center;
+}
+
+.product-grid{
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    margin-top:20px;
+}
+
+.card{
+    background:white;
+    padding:20px;
+    width:200px;
+    border-radius:10px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* BLOG */
+.blog{
+    padding:40px;
+    background:white;
+    text-align:center;
+}
+
+.blog-card{
+    margin:auto;
+    width:60%;
+    padding:20px;
+    background:#fafafa;
+    border-radius:10px;
+}
+
+/* FOOTER */
+footer{
+    background:#111;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+body{
+    background:black;
+    color:white;
+}
